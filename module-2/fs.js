@@ -33,41 +33,39 @@
 
 // 13-3 Asynchronous way to read and write files
 
-const fs = require('fs');
+// const fs = require('fs');
 
-console.log("Task 1");
+// console.log("Task 1");
 
-// Task 2
-// let text;
-let text = "node js";
+// // Task 2
+// // let text;
+// let text = "node js";
 
-fs.writeFile("./hello.txt", text, { encoding: "utf-8" }, (err) => {
-    if (err) {
-        console.log("Something went wrong", err);
-        return
-    }
-    console.log("Written successfully");
-    // console.log("After writing:", data);
-})
+// fs.writeFile("./hello.txt", text, { encoding: "utf-8" }, (err) => {
+//     if (err) {
+//         console.log("Something went wrong", err);
+//         return
+//     }
+//     console.log("Written successfully");
+// })
 
-fs.readFile('./hello.txt', { encoding: "utf-8" }, (err, data) => {
-    if (err) {
-        console.log("Something went wrong", err);
-        return
-    }
+// fs.readFile('./hello.txt', { encoding: "utf-8" }, (err, data) => {
+//     if (err) {
+//         console.log("Something went wrong", err);
+//         return
+//     }
 
-    text = data;
-    console.log(text, "inside callback");
-    // console.log(text, "Written successfully");
-    // console.log(data);
-});
+//     text = data;
+//     console.log(text, "inside callback");
+//     // console.log(data);
+// });
 
-// console.log(data);
-console.log(text);
+// // console.log(data);
+// console.log(text);
 
-console.log("Task 3");
+// console.log("Task 3");
 
-
+// ==============================================================================
 
 
 // const fs = require('fs');
@@ -79,3 +77,65 @@ console.log("Task 3");
 //   }
 //   console.log('File contents:', data);
 // });
+
+// ==============================================================================
+// ==============================================================================
+// ==============================================================================
+
+// 13-4 Buffer and Streaming
+
+const fs = require('fs');
+
+// fs.readFile('./hello-world.txt', { encoding: "utf-8" }, (err, data) => {
+//     if (err) {
+//         console.log("Something went wrong", err);
+//         return
+//     }
+
+//     fs.writeFile("./hello.txt", data, { encoding: "utf-8" }, (err) => {
+//         if (err) {
+//             console.log("Something went wrong", err);
+//             return
+//         }
+//         console.log("Written successfully");
+//     })
+
+// });
+
+const readStream = fs.createReadStream("./hello-world.txt", { encoding: "utf-8" })
+const writeStream = fs.createWriteStream("./hello.txt", { encoding: "utf-8" })
+
+readStream.on("data", (data) => {
+    console.log(data);
+
+    writeStream.write(data, (err) => {
+        if (err) {
+            throw Error("Error", err)
+        }
+    })
+})
+
+readStream.on("error", (err) => {
+    if (err) {
+        throw Error("Error", err)
+    }
+})
+
+// if writeStream e error alada vave catch korte cai, tahole ei code,, opore writeStream er catch er code deoa ase
+writeStream.on("error", (err) => {
+    if (err) {
+        throw Error("Error", err)
+    }
+})
+
+readStream.on("end", () => {
+    console.log("reading ended");
+    writeStream.end()
+})
+
+writeStream.on("finish", () => {
+    console.log("Written successfully");
+})
+
+
+
