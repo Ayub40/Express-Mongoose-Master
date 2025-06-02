@@ -27,7 +27,3 @@ exports.todosRouter.post('/create-todo', (req, res) => {
 // todosRouter.get("/:id");
 // todosRouter.put("/update-todo/:id");
 // todosRouter.delete("/delete-todo/:id");
-/**
- * User Name: mongodb
- * Password: B2DriC85M9Idcdzy
- */ 
