@@ -1,5 +1,7 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import app from "./app";
+require('dotenv').config();
+const mongoose = require('mongoose');
 
 let server;
 const port = 5000

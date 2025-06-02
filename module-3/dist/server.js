@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongodb_1 = require("mongodb");
 const app_1 = __importDefault(require("./app"));
+require('dotenv').config();
+const mongoose = require('mongoose');
 let server;
 const port = 5000;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.uxvdig6.mongodb.net/todosDB?retryWrites=true&w=majority&appName=Cluster0`;
