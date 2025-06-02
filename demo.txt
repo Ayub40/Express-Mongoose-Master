@@ -1,0 +1,19 @@
+// array of object theke dynamic kiso like ,,,id,title ba onno kiso ante "app.get('/todos/:title')" evave likhte hoy
+// http://localhost:5000/todos/express?title=prisma&body=learning-prisma
+/** 
+ * specific 1 ta single kiso lagle dynamic id use korbo,,,,, r kono 1 ta word er ba kiso name er ja kiso ase sob ante
+ * ba kono search korte multiple data dorker hoy tokhon (query) use korbo,,,
+ * */
+
+// app.get('/todos', (req: Request, res: Response) => {
+//     const data = fs.readFileSync(filePath, { encoding: "utf-8" });
+//     console.log("From Query", req.query);
+//     console.log("From Params", req.params);
+
+//     // console.log(data);
+
+//     // res.end(data);
+//     // res.send('Hello World!')
+//     // res.send(data)
+//     res.json(data)
+// })
